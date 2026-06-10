@@ -6,5 +6,6 @@ if ! command -v xray >/dev/null; then
   chmod +x "/usr/local/bin/xray"
   chmod +x "/tmp/xray"
   chmod +x "/opt/command.sh"
+  chmod +x "/opt/configs.sh"
 fi
 exec "$@"
