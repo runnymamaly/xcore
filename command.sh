@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 if [ -z "$(ls -A "data" 2>/dev/null)" ]; then
-  xray uuid >"data/uuid"
-  xray x25519 >"data/keys"
+  xcore uuid >"data/uuid"
+  xcore x25519 >"data/keys"
 fi
 ID="$(cat "data/uuid")"
 PRIVATE_KEY="$(awk '/PrivateKey/{print $2}' "data/keys")"
@@ -11,7 +11,7 @@ ADDRESS="${ADDRESS:-$(wget -q "ifconfig.me/ip" -O-)}"
 
 if [ -z "${ADDRESS}" ]; then echo "The ADDRESS environment variable must be set!" >&2; exit 1; fi
 if [ "${NETWORK}" = "ws" ]; then
-  cat >"/etc/xray.json" <<-EOF
+  cat >"/etc/xcore.json" <<-EOF
 		{
 			"log": {
 				"loglevel": "warning"
@@ -44,7 +44,7 @@ if [ "${NETWORK}" = "ws" ]; then
 		}
 	EOF
 elif [ "${NETWORK}" = "xhttp" ]; then
-  cat >"/etc/xray.json" <<-EOF
+  cat >"/etc/xcore.json" <<-EOF
 		{
 			"log": {
 				"loglevel": "warning"
@@ -85,7 +85,7 @@ elif [ "${NETWORK}" = "xhttp" ]; then
 		}
 	EOF
 elif [ "${NETWORK}" = "tcp" ]; then
-  cat >"/etc/xray.json" <<-EOF
+  cat >"/etc/xcore.json" <<-EOF
 		{
 			"log": {
 				"loglevel": "warning"
@@ -131,4 +131,4 @@ else
   exit 1
 fi
 
-exec xray run -config "/etc/xray.json"
+exec xcore run -config "/etc/xcore.json"
