@@ -14,7 +14,8 @@ if [ "${NETWORK}" = "ws" ]; then
   cat >"/etc/xcore.json" <<-EOF
 		{
 			"log": {
-				"loglevel": "warning"
+				"access": "none",
+				"loglevel": "none"
 			},
 			"inbounds": [
 				{
@@ -47,7 +48,8 @@ elif [ "${NETWORK}" = "xhttp" ]; then
   cat >"/etc/xcore.json" <<-EOF
 		{
 			"log": {
-				"loglevel": "warning"
+				"access": "none",
+				"loglevel": "none"
 			},
 			"inbounds": [
 				{
@@ -88,7 +90,8 @@ elif [ "${NETWORK}" = "tcp" ]; then
   cat >"/etc/xcore.json" <<-EOF
 		{
 			"log": {
-				"loglevel": "warning"
+				"access": "none",
+				"loglevel": "none"
 			},
 			"inbounds": [
 				{
