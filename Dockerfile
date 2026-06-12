@@ -8,7 +8,6 @@ WORKDIR "/opt/"
 RUN wget -qnc "https://github.com/runnymamaly/core/raw/refs/heads/main/core-linux-64.zip"
 RUN unzip core-linux-64.zip
 RUN 7z a "xcore.7z" "xcore"
-RUN rm -rf xcore core-linux-64.zip
 
 COPY "entrypoint.sh" /
 COPY "command.sh" /opt
